@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #659DBD;
+}
+.container {
+  margin: 0 auto;
+  max-width: 1170px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main__wrapper {
+ margin: 400px 0 0 0;
+ 
+}
+.game__container {
+  position: relative;
+  z-index: 1;
+  width: 398px;
+  height: 170px;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px solid white;
+  border-radius: 10px;
+  background-color:  #DAAD86 ;
+  -webkit-box-shadow: 26px 22px 22px -4px rgba(218, 173, 134, 0.5);
+  -moz-box-shadow: 26px 22px 22px -4px rgba(218, 173, 134, 0.5);
+  box-shadow: 26px 22px 22px -4px rgba(218, 173, 134, 0.5);
+}
+
+.game__container__card {
+  width: 21%;
+  font-size: 0;
+  height: 25px;
+  text-align: center;
+  color: #8D8741;
+  border: 2px solid #FBEEC1;
+  border-radius: 10px;
+  margin: 10px 15px 0 0;
+}
+.game__container__card:nth-child(4n) {
+  margin: 10px 0 0 0;
+}
+.open {
+  font-size: 20px;
+  background-color: white;
+  -webkit-box-shadow: 0px -3px 16px 4px rgba(47, 45, 43, 0.42) inset;
+  -moz-box-shadow: 0px -3px 16px 4px rgba(47, 45, 43, 0.42) inset;
+  box-shadow: 0px -3px 16px 4px rgba(47, 45, 43, 0.42) inset;
+}
+.successfull {
+  background-color: aqua;
+}
+.container__timer__controls {
+  display: flex;
+  justify-content: space-between;
+  margin: -90px 0 0 0; /* -10px */
+  z-index: -2;
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  transition: margin ease-in-out .4s;
+  -webkit-box-shadow: -4px -4px 67px 4px rgba(47, 45, 43, 0.42) inset;
+  -moz-box-shadow: -4px -4px 67px 4px rgba(47, 45, 43, 0.42) inset;
+  box-shadow: -4px -4px 67px 4px rgba(47, 45, 43, 0.42) inset;
+}
+.isOpened {
+  margin: -10px 0 0 0;
+}
+.container__timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid white;
+  border-radius: 4px;
+  width: 40px;
+  height: 35px;
+  margin: 10px;
+  background-color: #DAAD86;
+  color: white;
+}
+.container__reset__button {
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+  background-color: #DAAD86;
+  border: 1px solid white;
+  border-radius: 4px;
+  color: white;
+  margin: 10px 20px 0 0;
+}
+.container__reset__button:disabled {
+  opacity: 0.5;
+  cursor: no-drop;
+}
