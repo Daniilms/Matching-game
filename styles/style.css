@@ -3,7 +3,10 @@
   padding: 0;
 }
 body {
-  background-color: #659DBD;
+  background-color: #000000;
+  font-family: "Gluten", cursive;
+
+  font-family: "Roboto Mono", monospace;
 }
 .container {
   margin: 0 auto;
@@ -14,40 +17,323 @@ body {
   justify-content: center;
 }
 .main__wrapper {
- margin: 400px 0 0 0;
- 
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
-.game__container {
+.pipe__form__mario {
+  width: 40%;
+  height: 30%;
+  margin: 0 0 0 20%;
+}
+.console {
   position: relative;
   z-index: 1;
-  width: 398px;
-  height: 170px;
-  padding: 20px;
   display: flex;
-  flex-wrap: wrap;
-  border: 2px solid white;
+  align-items: center;
+  justify-content: center;
+  /* gap: 20px; */
+  width: 80%;
+  /* max-width: 50%; */
+  height: 40vh;
+  padding: 50px 54px 50px 50px;
+  border: 2px solid #6dcd65;
   border-radius: 10px;
-  background-color:  #DAAD86 ;
-  -webkit-box-shadow: 26px 22px 22px -4px rgba(218, 173, 134, 0.5);
-  -moz-box-shadow: 26px 22px 22px -4px rgba(218, 173, 134, 0.5);
-  box-shadow: 26px 22px 22px -4px rgba(218, 173, 134, 0.5);
+  background-color: #6dcd65;
+}
+.gamepad {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 10%;
+  height: 74%;
+  border-radius: 15px;
+  background-color: #161616;
+}
+.gamepad-right {
+  background-color: white;
+  margin: 0 0 0 0;
+}
+.gamepad-left {
+  margin: 0 0 0 0;
+}
+.gamepad svg {
+  width: 20%;
+  height: 20%;
+  fill: #555958;
+  stroke: #555958;
+  border: 3px solid #212020;
+  border-radius: 10px;
+  background-color: #212020;
+}
+.gamepad-left svg {
+  transform: rotate(90deg);
+}
+.gamepad-right svg {
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
 }
 
-.game__container__card {
-  width: 21%;
-  font-size: 0;
-  height: 25px;
-  text-align: center;
-  color: #8D8741;
-  border: 2px solid #FBEEC1;
-  border-radius: 10px;
-  margin: 10px 15px 0 0;
+.gamepad svg {
+  width: 20%;
+  height: 20%;
+  fill: #555958;
+  stroke: #555958;
 }
-.game__container__card:nth-child(4n) {
+.gamepad path {
+  fill: #555958;
+}
+
+.gamepad__battery__indicators {
+  width: 100%;
+  height: 17%;
+  display: flex;
+  justify-content: center;
+  /* margin: 0 0 0 57%; */
+}
+.gamepad__battery__indicators span {
+  width: 6%;
+  height: 10%;
+  border: 2px solid black;
+  border-radius: 50px;
+  background-color: #6dcd65;
+}
+.gamepad__battery__indicators span:not(:first-child) {
+  margin: 0 0 0 2px;
+}
+.gamepad__d__pad {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 30%;
+}
+.gamepad__d__pad__arrow {
+  width: 40px;
+  height: 10px;
+  background-color: #161616;
+  border-radius: 25px;
+  border: 1px solid #373636;
+}
+.arrow__left__right {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 107%;
+  height: 53%;
+}
+.gamepad__d__pad__arrow-up {
+  margin: 10px 0 0 0;
+  transform: rotate(90deg);
+}
+.gamepad__d__pad__arrow-down {
+  margin: 0 0 10px 0;
+  transform: rotate(90deg);
+}
+.gamepad__d__pad__arrow-left {
+  margin: 0 0 0 10px;
+}
+.gamepad__d__pad__arrow-right {
+  margin: 0 10px 0 0;
+}
+.console__controls__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+}
+.console__controls__button {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+}
+.console__controls__button:last-child {
+  margin: 0 0 40px 0;
+}
+.console__controls__buttons svg {
+  width: 100%;
+  height: 100%;
+}
+
+.console__status__bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 5%;
+  height: 100%;
+  margin: 0 0 0 0;
+}
+.console__status__bar-2 {
+  margin: 0 0 0 0;
+}
+.console__time {
   margin: 10px 0 0 0;
 }
-.open {
+.console__time__time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.console__time__time__element {
   font-size: 20px;
+  font-weight: 600;
+  color: black;
+}
+.console__battery {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.console__battery__battery {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 25px;
+  height: 40px;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  padding: 1px;
+  margin: 0 0 10px 0;
+}
+.console__battery__battery__indicator {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background-color: #6dcd65;
+}
+.console__screen {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 450px;
+  height: 70%;
+  background-image: url("../images/blur.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 10px solid #000000;
+  border-radius: 15px;
+}
+.console__screen::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 0;
+  background-color: white;
+  top: 0;
+  opacity: 1;
+  filter: blur(5px);
+  transition: all ease-in-out 0.4s;
+}
+.console__screen-mod.console__screen::after {
+  height: 100%;
+  opacity: 0.9;
+}
+.console__screen__wrp {
+  /* height: 100%; */
+}
+.lock__time {
+  font-size: 20px;
+  font-size: 280%;
+  top: 110px;
+  position: absolute;
+  height: 0;
+  z-index: -1;
+  opacity: 0;
+  color: #161616;
+  transition: height ease-in-out 0.4s, opacity ease-in-out 0.4s;
+  margin: 0 0 0 20px;
+}
+.lock__time-mod {
+  height: 100%;
+  opacity: 1;
+  z-index: 2;
+}
+.lock__time__seconds {
+  font-size: 25px;
+  margin: 0 0 0 -20px;
+  color: #6dcd65;
+}
+
+/* .console__screen::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 0.8;
+  filter: blur(5px);
+} */
+.console__screen-main {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+  max-width: 60%;
+  height: 70%;
+  /* margin: 0 0 10% 17%; */
+  gap: 12px;
+}
+.game__container__card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 120%;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  /*  margin: 10px 0 0 0; */
+}
+.game__container__card::after {
+  content: "";
+  position: absolute;
+  width: 104%;
+  height: 100%;
+  background-color: #000000;
+  border-radius: 10px;
+}
+.game__container__card-mod.game__container__card::after {
+  background-color: transparent;
+}
+.game__container__card-mod-manual-controls.game__container__card::after {
+  background-color: white;
+  border: 2px solid white;
+}
+/* .game__container__card:nth-child(1) {
+  border-left: none;
+  border-top: none;
+}
+.game__container__card:nth-child(2),
+.game__container__card:nth-child(3) {
+  border-top: none;
+}
+.game__container__card:nth-child(4) {
+  border-top: none;
+  border-right: none;
+} */
+/* .game__container__card:nth-child(4n) {
+  margin: 10px 0 0 0;
+} */
+.open {
+  font-size: 50px;
   background-color: white;
   -webkit-box-shadow: 0px -3px 16px 4px rgba(47, 45, 43, 0.42) inset;
   -moz-box-shadow: 0px -3px 16px 4px rgba(47, 45, 43, 0.42) inset;
@@ -59,18 +345,28 @@ body {
 .container__timer__controls {
   display: flex;
   justify-content: space-between;
-  margin: -90px 0 0 0; /* -10px */
+  align-items: center;
+  width: 51%;
+  height: 10%;
+  opacity: 0;
+  margin: 0 0 0 0; /* -10px */
   z-index: -2;
   background-color: white;
   border-radius: 10px;
   padding: 15px;
-  transition: margin ease-in-out .4s;
+  transform: translateY(-80px);
+  transition: all ease-in-out 0.4s, height ease-in-out 0.4s,
+    opacity ease-in-out 0.4s;
   -webkit-box-shadow: -4px -4px 67px 4px rgba(47, 45, 43, 0.42) inset;
   -moz-box-shadow: -4px -4px 67px 4px rgba(47, 45, 43, 0.42) inset;
   box-shadow: -4px -4px 67px 4px rgba(47, 45, 43, 0.42) inset;
 }
 .isOpened {
-  margin: -10px 0 0 0;
+  /* height: 10%; */
+  opacity: 1;
+  margin: 0 0 0 0;
+  transform: translateY(-10px);
+  z-index: 1;
 }
 .container__timer {
   display: flex;
@@ -81,14 +377,14 @@ body {
   width: 40px;
   height: 35px;
   margin: 10px;
-  background-color: #DAAD86;
+  background-color: #daad86;
   color: white;
 }
 .container__reset__button {
   width: 100px;
   height: 40px;
   cursor: pointer;
-  background-color: #DAAD86;
+  background-color: #daad86;
   border: 1px solid white;
   border-radius: 4px;
   color: white;
