@@ -1,0 +1,97 @@
+@media (max-width: 1400px) {
+  .console__screen {
+    width: 450px;
+    height: 70%;
+    background-image: url("../images/blur.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 10px solid #000000;
+    border-radius: 15px;
+  }
+  .gamepad {
+    width: 80px;
+    height: 74%;
+  }
+  .gamepad__d__pad__arrow {
+    width: 30px;
+    height: 10px;
+  }
+  .arrow__left__right {
+    width: 100%;
+    height: 30%;
+  }
+}
+@media (max-width: 810px) {
+  .console__screen {
+    width: 350px;
+    height: 45%;
+    background-image: url("../images/blur.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 10px solid #000000;
+    border-radius: 15px;
+  }
+  .gamepad {
+    width: 60px;
+    height: 50%;
+  }
+  .console__battery__battery {
+    width: 12px;
+    height: 23px;
+  }
+  .gamepad__d__pad__arrow {
+    width: 24px;
+    height: 5px;
+  }
+  .arrow__left__right {
+    width: 113%;
+    height: 58%;
+  }
+}
+@media (max-width: 600px) {
+  .console__screen {
+    width: 230px;
+    height: 27%;
+    background-image: url("../images/blur.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 10px solid #000000;
+    border-radius: 15px;
+  }
+  .gamepad {
+    width: 40px;
+    height: 32%;
+    border-radius: 10px;
+  }
+  .console__controls__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5px;
+  }
+  .console__controls__buttons svg {
+    width: 15px;
+    height: 15px;
+  }
+  .console__controls__button:first-child {
+    margin: 0 0 0 5px;
+  }
+  .console__controls__button:last-child {
+    margin: 0 5px 25px 0;
+  }
+  .console__battery__battery {
+    width: 3px;
+    height: 7px;
+  }
+  .gamepad__d__pad__arrow {
+    width: 20px;
+    height: 5px;
+  }
+  .arrow__left__right {
+    width: 120%;
+    height: 30%;
+  }
+}
