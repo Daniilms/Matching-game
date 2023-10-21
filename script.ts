@@ -1,30 +1,30 @@
 /* document.addEventListener("DOMContentLoaded", gameStart()); */
-const controlsButton = document.querySelectorAll(".gamepad__d__pad__arrow");
-const gameField = document.querySelector(".console__screen-main");
-const consoleScreen = document.querySelector(".console__screen");
-const consoleTime = document.querySelector(".console__time__time");
-const consoleTimeLock = document.querySelector(".lock__time");
-const forSeconds = consoleTimeLock.querySelector(".lock__time__seconds");
-const forTime = consoleTimeLock.querySelector(".lock__time__hours");
-const consolePlusButton = document.querySelector(
+const controlsButton: NodeListOf<Element> = document.querySelectorAll(".gamepad__d__pad__arrow");
+const gameField: Element = document.querySelector(".console__screen-main") as Element;
+const consoleScreen: Element = document.querySelector(".console__screen") as Element;
+const consoleTime: Element = document.querySelector(".console__time__time") as Element;
+const consoleTimeLock: Element = document.querySelector(".lock__time") as Element;
+const forSeconds: Element = consoleTimeLock.querySelector(".lock__time__seconds") as Element;
+const forTime: Element = consoleTimeLock.querySelector(".lock__time__hours") as Element;
+const consolePlusButton: Element = document.querySelector(
   ".console__controls__button-plus"
-);
-const consoleMinusButton = document.querySelector(
+) as Element;
+const consoleMinusButton: Element = document.querySelector(
   ".console__controls__button-minus"
-);
-const consoleBatteryIndicator = document.querySelector(
+) as Element;
+const consoleBatteryIndicator: HTMLElement = document.querySelector(
   ".console__battery__battery__indicator "
-);
-let isOpen = false;
-let isStarted = false;
-let isFlipped = false;
+) as HTMLElement;
+let isOpen: boolean = false;
+let isStarted: boolean = false;
+let isFlipped: boolean = false;
 let firstCard;
 let secondCard;
-let lock = false;
-const array = [];
+let lock: boolean = false;
+const array: number[] = [];
 let twoCardsArray = [];
 
-function fillArray() {
+function fillArray(): void {
   while (array.length > 0) {
     array.pop();
   }
@@ -33,8 +33,10 @@ function fillArray() {
     array.push(i, i);
   }
 }
+
 fillArray();
-const arrOfImgNames = [
+
+const arrOfImgNames: string[] = [
   "Mario",
   "Mario",
   "Bowser",
@@ -52,16 +54,18 @@ const arrOfImgNames = [
   "Golden-mushroom",
   "Golden-mushroom",
 ];
-function shuffle() {
+
+function shuffle(): void {
   arrOfImgNames.sort(() => Math.random() - 0.5);
   /* array.sort(() => Math.random() - 0.5); */
 }
+
 shuffle();
 
-function createGameCards() {
+function createGameCards(): void {
   for (let i = 0; i < 16; i++) {
-    let createdCards = document.createElement("p");
-    createdCards.setAttribute("data-value", array[i]);
+    let createdCards: HTMLParagraphElement = document.createElement("p");
+    createdCards.setAttribute("data-value", String(array[i]));
     createdCards.id = "game_card";
     createdCards.style.backgroundImage = `url(./images/${arrOfImgNames[i]}.jpg)`;
     createdCards.classList.add("game__container__card");
@@ -69,22 +73,23 @@ function createGameCards() {
     gameField.appendChild(createdCards);
   }
 }
+
 createGameCards();
 
-let fullBattery = 100;
+let fullBattery: number = 100;
 
-function changeBatteryFill() {
+function changeBatteryFill(): void {
   fullBattery--;
   consoleBatteryIndicator.style.height = fullBattery - 1 + "%";
 }
 
 function getTime() {
-  const forHours = consoleTime.querySelector(".console__time__time__hours");
-  const forMinutes = consoleTime.querySelector(".console__time__time__minutes");
-  const date = new Date();
-  const hour = date.getHours();
-  const minutes = date.getMinutes();
-  const seconds = date.getSeconds();
+  const forHours: Element = consoleTime.querySelector(".console__time__time__hours") as Element;
+  const forMinutes: Element = consoleTime.querySelector(".console__time__time__minutes") as Element;
+  const date: Date = new Date();
+  const hour: number = date.getHours();
+  const minutes: number = date.getMinutes();
+  const seconds: number = date.getSeconds();
 
   if (hour.toString().length < 2) {
     forHours.textContent = `0${hour}`;
@@ -127,12 +132,12 @@ function interval() {
     console.log(`заряда осталось: ${consoleBatteryIndicator.style.height}`);
     if (consoleBatteryIndicator.style.height === 0 + "%") {
       clearInterval(interval2);
-      test();
     }
   }, 1000);
 }
 
-const gameCards = document.querySelectorAll("#game_card");
+const gameCards: NodeListOf<HTMLElement> = document.querySelectorAll("#game_card");
+
 /* function moveWithArrows() {} */
 controlsButton.forEach((button) => {
   button.addEventListener("click", (evt) => {
@@ -144,7 +149,7 @@ let currentPosition = 0;
 let howManyClicks = 0;
 
 consolePlusButton.addEventListener("click", (evt) => {
-  let currentElem = "";
+  let currentElem: Element;
   gameCards.forEach((el) => {
     if (el.classList.contains("game__container__card-mod-manual-controls")) {
       el.classList.remove("game__container__card-mod-manual-controls");
@@ -152,8 +157,8 @@ consolePlusButton.addEventListener("click", (evt) => {
       currentElem = el;
     }
   });
-  console.log(currentElem);
-  flipCard(currentElem);
+  //console.log(currentElem);
+  flipCard(currentElem!);
 });
 
 consoleMinusButton.addEventListener("click", () => {
@@ -240,30 +245,30 @@ function move(evt) {
 function createGameField() {
   gameCards.forEach((card) => {
     card.addEventListener("click", (evt) => {
-      flipCard(evt.target);
+      flipCard(evt.target as HTMLElement);
     });
   });
 }
 createGameField();
 
-function flipCard(evt) {
+function flipCard(card: Element) {
   if (!isStarted) {
     interval();
   }
   isStarted = true;
   if (lock) return;
 
-  if (evt === firstCard) return;
+  if (card === firstCard) return;
 
-  evt.classList.add("open");
-  evt.classList.add("game__container__card-mod");
+  card.classList.add("open");
+  card.classList.add("game__container__card-mod");
 
   if (!isFlipped) {
     isFlipped = true;
-    firstCard = evt;
+    firstCard = card;
     return;
   }
-  secondCard = evt;
+  secondCard = card;
   checkForMatch();
 }
 
@@ -307,7 +312,7 @@ let isDone = false;
 function lockingAllCards() {
   const gameCards = document.querySelectorAll("#game_card");
   gameCards.forEach((card) => {
-    card.removeEventListener("click", flipCard);
+    //card.removeEventListener("click", flipCard);
     card.classList.remove("successfull");
   });
 }
