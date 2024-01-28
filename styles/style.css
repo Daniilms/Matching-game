@@ -5,7 +5,6 @@
 body {
   background-color: #000000;
   font-family: "Gluten", cursive;
-
   font-family: "Roboto Mono", monospace;
 }
 .container {
@@ -29,20 +28,27 @@ body {
   height: 30%;
   margin: 0 0 0 20%;
 }
-.console {
+.console-wrp {
   position: relative;
   z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* gap: 20px; */
   width: 80%;
-  /* max-width: 50%; */
-  height: 40vh;
-  padding: 50px 54px 50px 50px;
+  height: 100%;
   border: 2px solid #6dcd65;
   border-radius: 10px;
   background-color: #6dcd65;
+}
+.console {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 70%;
+  min-height: 300px;
+  max-height: 300px;
+  display: flex;
 }
 .gamepad {
   display: flex;
@@ -50,6 +56,7 @@ body {
   justify-content: space-between;
   flex-direction: column;
   width: 10%;
+  min-width: 80px;
   height: 74%;
   border-radius: 15px;
   background-color: #161616;
@@ -243,13 +250,10 @@ body {
   height: 100%;
   opacity: 0.9;
 }
-.console__screen__wrp {
-  /* height: 100%; */
-}
 .lock__time {
   font-size: 20px;
   font-size: 280%;
-  top: 110px;
+  top: 78px;
   position: absolute;
   height: 0;
   z-index: -1;
@@ -317,21 +321,6 @@ body {
   background-color: white;
   border: 2px solid white;
 }
-/* .game__container__card:nth-child(1) {
-  border-left: none;
-  border-top: none;
-}
-.game__container__card:nth-child(2),
-.game__container__card:nth-child(3) {
-  border-top: none;
-}
-.game__container__card:nth-child(4) {
-  border-top: none;
-  border-right: none;
-} */
-/* .game__container__card:nth-child(4n) {
-  margin: 10px 0 0 0;
-} */
 .open {
   font-size: 50px;
   background-color: white;
@@ -362,7 +351,6 @@ body {
   box-shadow: -4px -4px 67px 4px rgba(47, 45, 43, 0.42) inset;
 }
 .isOpened {
-  /* height: 10%; */
   opacity: 1;
   margin: 0 0 0 0;
   transform: translateY(-10px);
