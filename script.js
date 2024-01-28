@@ -20,8 +20,8 @@ let isFlipped = false;
 let firstCard;
 let secondCard;
 let lock = false;
+let isWin = false;
 const array = [];
-let twoCardsArray = [];
 
 function fillArray() {
   while (array.length > 0) {
@@ -58,9 +58,8 @@ function shuffle() {
   arrOfImgNames.sort(() => Math.random() - 0.5);
 }
 
-shuffle();
-
 function createGameCards() {
+  shuffle();
   for (let i = 0; i < 16; i++) {
     let createdCards = document.createElement("p");
     createdCards.setAttribute("data-value", String(array[i]));
@@ -71,14 +70,30 @@ function createGameCards() {
     gameField.appendChild(createdCards);
   }
 }
-
 createGameCards();
-
+function resetField() {
+  fillArray();
+  createGameCards();
+}
+function deleteGameCards() {
+  const gameCards = document.querySelectorAll("#game_card");
+  gameCards.forEach((card) => {
+    card.remove();
+  });
+}
 let fullBattery = 100;
-
-function changeBatteryFill() {
-  fullBattery--;
+function updateBatteryElementStyle() {
   consoleBatteryIndicator.style.height = fullBattery - 1 + "%";
+}
+function changeBatteryFill() {
+  if (isStarted) {
+    fullBattery--;
+  }
+
+  consoleBatteryIndicator.style.height = fullBattery - 1 + "%";
+  if (fullBattery === 1) {
+    gameIsDone();
+  }
 }
 
 function getTime() {
@@ -128,7 +143,7 @@ function interval() {
   const interval2 = setInterval(() => {
     changeBatteryFill();
     console.log(`заряда осталось: ${consoleBatteryIndicator.style.height}`);
-    if (consoleBatteryIndicator.style.height === 0 + "%") {
+    if (consoleBatteryIndicator.style.height === 0 + "%" || !isStarted) {
       clearInterval(interval2);
     }
   }, 1000);
@@ -145,7 +160,7 @@ controlsButton.forEach((button) => {
 let currentPosition = 0;
 let howManyClicks = 0;
 
-consolePlusButton.addEventListener("click", (evt) => {
+consolePlusButton.addEventListener("click", () => {
   let currentElem;
   gameCards.forEach((el) => {
     if (el.classList.contains("game__container__card-mod-manual-controls")) {
@@ -155,6 +170,7 @@ consolePlusButton.addEventListener("click", (evt) => {
     }
   });
   flipCard(currentElem);
+  checkForWin();
 });
 
 consoleMinusButton.addEventListener("click", () => {
@@ -238,14 +254,23 @@ function move(evt) {
     );
   }
 }
-function createGameField() {
+function addListenerToEveryCard() {
+  const gameCards = document.querySelectorAll("#game_card");
   gameCards.forEach((card) => {
     card.addEventListener("click", (evt) => {
       flipCard(evt.target);
     });
   });
 }
-createGameField();
+function removeListenerFromEveryCard() {
+  const gameCards = document.querySelectorAll("#game_card");
+  gameCards.forEach((card) => {
+    card.removeEventListener("click", (evt) => {
+      flipCard(evt.target);
+    });
+  });
+}
+addListenerToEveryCard();
 
 function flipCard(card) {
   if (!isStarted) {
@@ -266,6 +291,7 @@ function flipCard(card) {
   }
   secondCard = card;
   checkForMatch();
+  checkForWin();
 }
 
 function checkForMatch() {
@@ -300,7 +326,9 @@ function unflipAllCards() {
   const gameCards = document.querySelectorAll("#game_card");
   gameCards.forEach((card) => {
     card.classList.remove("open");
+    card.classList.remove("game__container__card-mod");
   });
+  console.log("вызвал unflipCards");
 }
 
 let isDone = false;
@@ -310,4 +338,42 @@ function lockingAllCards() {
   gameCards.forEach((card) => {
     card.classList.remove("successfull");
   });
+}
+
+function gameIsDone() {
+  if (fullBattery === 1 || isWin) {
+    removeListenerFromEveryCard();
+    setTimeout(() => {
+      consoleScreen.classList.add("console__screen-mod");
+      lockingAllCards();
+      unflipAllCards();
+      resetBoard();
+      deleteGameCards();
+      resetField();
+    }, 1500);
+    setTimeout(() => {
+      consoleScreen.classList.remove("console__screen-mod");
+      fullBattery = 100;
+      isStarted = false;
+      updateBatteryElementStyle();
+      addListenerToEveryCard();
+    }, 4000);
+  }
+}
+function checkForWin() {
+  const gameCards = document.querySelectorAll("#game_card");
+  let iterator = 0;
+  if (gameCards !== undefined) {
+    gameCards.forEach((card) => {
+      if (card.classList.contains("successfull")) {
+        iterator++;
+      }
+    });
+  }
+  if (iterator === 16) {
+    isWin = true;
+    gameIsDone();
+  } else {
+    isWin = false;
+  }
 }
