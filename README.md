@@ -28,7 +28,7 @@ Live version is availible at : https://daniilms.github.io/Matching-game/
 
 ## How to use
 
-Like a regular Tic-Tac-Toe game, just press 'play' and go go go!.
+Like a regular Matching game, just press 'play' and go go go!.
 
 ## Used technologies
 
